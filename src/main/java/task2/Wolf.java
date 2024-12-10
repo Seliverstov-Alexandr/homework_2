@@ -1,7 +1,8 @@
 package task2;
-
+import java.time.LocalDate;
 public class Wolf extends Predator {
-    public Wolf() {
-        super("Wolf", "Gray Wolf", 1500.0, "Aggressive");
+    public Wolf(String breed, String name, Double cost, String character, LocalDate birthDate) {
+        super(breed, name, cost, character, birthDate);
     }
+
 }

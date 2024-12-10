@@ -1,19 +1,12 @@
 package task2;
+import java.time.LocalDate;
+import java.util.concurrent.ThreadLocalRandom;
 
-import java.util.List;
-import java.util.ArrayList;
-public interface CreateAnimalService {
-    default List<AbstractAnimal> create10Animals() {
-        List<AbstractAnimal> animals = new ArrayList<>();
-        int count = 0;
-        while (count < 10) {
-            animals.add(createRandomAnimal());
-            System.out.println("Created: " + animals.get(count).getName());
-            count++;
-        }
-        return animals;
+public class CreateAnimalService {
+    public static LocalDate generateRandomDate() {
+        long start = LocalDate.of(2000, 1, 1).toEpochDay();
+        long end = LocalDate.of(2023, 12, 31).toEpochDay();
+        long randomEpochDay = ThreadLocalRandom.current().nextLong(start, end);
+        return LocalDate.ofEpochDay(randomEpochDay);
     }
-
-    AbstractAnimal createRandomAnimal(); // Метод для создания случайного животного
 }
-

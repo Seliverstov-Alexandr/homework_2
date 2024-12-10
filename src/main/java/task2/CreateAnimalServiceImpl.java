@@ -1,44 +1,14 @@
 package task2;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class CreateAnimalServiceImpl implements CreateAnimalService {
-
-    @Override
-    public AbstractAnimal createRandomAnimal() {
-        Random random = new Random();
-        int type = random.nextInt(4);
-
-        return switch (type) {
-            case 0 -> new Wolf();
-            case 1 -> new Shark();
-            case 2 -> new Dog();
-            default -> new Cat();
-        };
-    }
-
-    // Перегруженный метод для создания N животных
-    public List<AbstractAnimal> createAnimals(int n) {
+public class CreateAnimalServiceImpl {
+    public AbstractAnimal[] createAnimals() {
         List<AbstractAnimal> animals = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            animals.add(createRandomAnimal());
-            System.out.println("Created: " + animals.get(i).getName());
-        }
-        return animals;
-    }
-
-    // Переопределенный метод с использованием do-while
-    @Override
-    public List<AbstractAnimal> create10Animals() {
-        List<AbstractAnimal> animals = new ArrayList<>();
-        int count = 0;
-        do {
-            animals.add(createRandomAnimal());
-            System.out.println("Created: " + animals.get(count).getName());
-            count++;
-        } while (count < 10);
-        return animals;
+        animals.add(new Wolf("Волк", "Серый", 1000.0, "Дикий", CreateAnimalService.generateRandomDate()));
+        animals.add(new Dog("Собака", "Бобик", 500.0, "Добрый", CreateAnimalService.generateRandomDate()));
+        animals.add(new Cat("Кошка", "Мурка", 300.0, "Ласковая", CreateAnimalService.generateRandomDate()));
+        animals.add(new Shark("Акула", "Гроза", 5000.0, "Опасная", CreateAnimalService.generateRandomDate()));
+        return animals.toArray(new AbstractAnimal[0]);
     }
 }

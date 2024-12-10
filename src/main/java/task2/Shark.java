@@ -1,7 +1,8 @@
 package task2;
-
+import java.time.LocalDate;
 public class Shark extends Predator {
-    public Shark() {
-        super("Shark", "Great White Shark", 5000.0, "Dangerous");
+    public Shark(String breed, String name, Double cost, String character, LocalDate birthDate) {
+        super(breed, name, cost, character, birthDate);
     }
 }
+
